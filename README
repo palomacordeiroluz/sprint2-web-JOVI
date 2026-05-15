@@ -1,0 +1,28 @@
+## Alunas
+Ana Beatriz Santos      RM: 569087
+Paloma Cordeiro da Luz  RM: 574048
+Yasmin Gomes            RM: 572363
+
+# JoviClass 📚
+
+Aplicativo web para estudantes desenvolvido em JavaScript puro.
+
+## Funcionalidades
+
+- Login e cadastro com validação
+- Slideshow de imagens na tela inicial
+- Horário de aulas com adição dinâmica
+- Calendário com eventos
+- Pastas de arquivos
+- Scanner de imagens
+- Aula Inteligente
+
+## Como rodar
+
+Abra o arquivo index.html no navegador.
+
+## Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript puro
