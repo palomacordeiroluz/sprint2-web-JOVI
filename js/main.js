@@ -181,3 +181,181 @@ function renderizarCalendario() {
 
     mostrarEventos();
 }
+
+function mostrarEventos() {
+    var lista = document.getElementById('lista-eventos');
+    lista.innerHTML = '';
+
+    if (eventos.length === 0) {
+        lista.innerHTML = '<p style="color:#666; text-align:center;">Nenhum evento ainda</p>';
+        return;
+    }
+
+    eventos.forEach(function(ev) {
+        var card = document.createElement('div');
+        card.className = 'info-item';
+        card.innerHTML = '<h3>' + ev.titulo + '</h3>' +
+                         '<p>' + ev.data + '</p>';
+        lista.appendChild(card);
+    });
+}
+
+function adicionarEvento() {
+    var titulo = prompt('Nome do evento:');
+    if (!titulo) return;
+
+    var data = prompt('Data do evento (ex: 11/05/2026):');
+    if (!data) return;
+
+    eventos.push({ titulo: titulo, data: data });
+    mostrarEventos();
+    alert('✅ Evento adicionado!');
+}
+
+function mesAnterior() {
+    dataAtual.setMonth(dataAtual.getMonth() - 1);
+    renderizarCalendario();
+}
+
+function proximoMes() {
+    dataAtual.setMonth(dataAtual.getMonth() + 1);
+    renderizarCalendario();
+}
+
+// ===== PASTAS =====
+var pastas = [
+    { nome: 'Matemática', arquivos: 3 },
+    { nome: 'Português', arquivos: 5 },
+    { nome: 'História', arquivos: 2 },
+];
+
+function mostrarPastas() {
+    var lista = document.getElementById('lista-pastas');
+    lista.innerHTML = '';
+
+    pastas.forEach(function(pasta) {
+        var card = document.createElement('div');
+        card.className = 'info-item';
+        card.innerHTML = '<h3>📁 ' + pasta.nome + '</h3>' +
+                         '<p>' + pasta.arquivos + ' arquivo(s)</p>';
+
+        card.addEventListener('click', function() {
+            alert('📁 Abrindo pasta: ' + pasta.nome);
+        });
+
+        lista.appendChild(card);
+    });
+}
+
+function criarPasta() {
+    var nome = prompt('Nome da nova pasta:');
+    if (!nome) return;
+
+    pastas.push({ nome: nome, arquivos: 0 });
+    mostrarPastas();
+    alert('✅ Pasta "' + nome + '" criada!');
+}
+
+// ===== SCANNER =====
+function previewImagem(event) {
+    var file = event.target.files[0];
+    if (!file) return;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var preview = document.getElementById('scanner-preview');
+        preview.innerHTML = '<img src="' + e.target.result + '" alt="Preview"/>';
+    };
+    reader.readAsDataURL(file);
+}
+
+function salvarImagem() {
+    var preview = document.getElementById('scanner-preview');
+    if (!preview.querySelector('img')) {
+        alert('⚠️ Selecione uma imagem primeiro!');
+        return;
+    }
+    alert('✅ Imagem salva com sucesso!');
+}
+
+// ===== AULA INTELIGENTE =====
+function previewAula(event) {
+    var file = event.target.files[0];
+    if (!file) return;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var preview = document.getElementById('aula-preview');
+        preview.innerHTML = '<img src="' + e.target.result + '" alt="Preview"/>';
+    };
+    reader.readAsDataURL(file);
+}
+
+function fazerSlides() {
+    alert('🖼️ Slides gerados com sucesso!');
+}
+
+function salvarGaleria() {
+    alert('💾 Imagem salva na galeria!');
+}
+
+function criarResumo() {
+    alert('📝 Resumo criado!\n\nSeus principais pontos foram organizados.');
+}
+
+function criarFlashcards() {
+    alert('🃏 Flashcards criados!\n\n3 flashcards gerados do seu material.');
+}
+
+// ===== PERFIL =====
+function editarPerfil() {
+    // CORRIGIDO: removido 'nome-usuario' e 'usuarioLogado' que não existem no HTML
+    var novoNome = prompt('Seu nome:', document.getElementById('perfil-nome').textContent);
+    if (novoNome) {
+        document.getElementById('perfil-nome').textContent = novoNome;
+        alert('✅ Perfil atualizado!');
+    }
+}
+
+// ===== CONFIGURAÇÕES =====
+function toggleNotificacoes() {
+  const ativo = document.getElementById('toggle-notif').checked;
+  alert(ativo ? '🔔 Notificações ativadas!' : '🔕 Notificações desativadas.');
+}
+
+function toggleDark() {
+  const dark = document.getElementById('toggle-dark').checked;
+  document.documentElement.style.setProperty('--fundo', dark ? '#1a1a1a' : '#8b619c');
+  document.documentElement.style.setProperty('--card', dark ? '#111' : '#2A2A2A');
+}
+
+function redefinirSenha() {
+  const email = prompt('Digite seu email para redefinir a senha:');
+  if (email && email.includes('@')) {
+    alert('✅ Email de redefinição de senha enviado para ' + email);
+  } else if (email) {
+    alert('❌ Email inválido.');
+  }
+}
+
+function verPrivacidade() {
+  alert('🔒 Política de Privacidade\n\nSeus dados são armazenados localmente no dispositivo e não são compartilhados com terceiros.');
+}
+
+function verTermos() {
+  alert('📋 Termos de Uso\n\nAo usar o JoviClass você concorda com o uso responsável da plataforma para fins educacionais.');
+}
+
+function verDeclaracao() {
+  alert('🛡️ Declaração de Privacidade\n\nO JoviClass respeita sua privacidade e segue as diretrizes da LGPD.');
+}
+
+// ===== LOGOUT =====
+function fazerLogout() {
+    // CORRIGIDO: removido 'usuarioLogado' que não existia
+    const confirmar = confirm('Tem certeza que deseja sair?');
+    if (confirmar) {
+        alert('Até logo! 👋');
+        navegarPara('tela-splash');
+    }
+}
