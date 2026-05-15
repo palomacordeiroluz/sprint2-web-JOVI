@@ -1,7 +1,8 @@
 ## Alunas
-Ana Beatriz Santos      RM: 569087
-Paloma Cordeiro da Luz  RM: 574048
-Yasmin Gomes            RM: 572363
+
+- Ana Beatriz Santos      RM: 569087
+- Paloma Cordeiro da Luz  RM: 574048
+- Yasmin Gomes            RM: 572363
 
 # JoviClass 📚
 
