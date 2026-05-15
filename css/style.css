@@ -1,0 +1,547 @@
+:root { /*deposito de variaveis globais*/
+  --roxo-profundo:  #4A0080;
+  --roxo-vivo: #7B2FBE;
+  --roxo-medio: #9B59B6;
+  --lavanda: #C39BD3;
+  --lilas-claro: #E8D5F5;
+  --branco: #FFFFFF;
+  --cinza: #dfd6d6;
+  --fundo: #8b619c;
+  --card: #2a2a2a;
+  --erro: #e74c3c;
+
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*tamanho mais previsivel dos elementos*/
+}
+
+body {  /*corpo inteiro da pagina*/
+
+  background-color: var(--fundo); 
+  color: var(--branco); /*cor padrao do texto*/
+  font-family: Arial, sans-serif; /*fonte do texto*/
+  display: flex; /*facilitar na organizacao de elementos*/
+  justify-content: center; /*centralizar horizontalmente*/
+  align-items: center; /*centralizar verticalmente*/
+  min-height: 100vh; /*altura minima da tela inteira*/
+
+}
+
+
+/*========= TELAS ==========*/
+.tela {
+  display: none; /*esconde as telas inicialmente*/
+  width: 390px; /*largura da tela mobile*/
+  min-height: 100vh; /*altura minima da tela*/
+  padding: 40px 30px; /*espaçamento interno da tela*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+}
+
+
+.tela.ativa {
+  display: flex; /*aparece com a class ativa*/
+}
+
+
+/*======= LOGO =======*/
+.logo-container {
+  text-align: center;
+}
+
+
+.logo-icon {
+  font-size: 64px;
+  margin-bottom: 12px;
+}
+
+.logo-container h1 {
+  font-size: 36px;
+  color: var(--branco);
+}
+
+.logo-container p {
+  color: var(--lavanda);
+  margin-top: 6px;
+}
+
+/* ===== BOTÕES ===== */
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.btn-roxo {
+  background-color: var(--roxo-vivo);
+  color: var(--branco);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-borda {
+  background-color: transparent;
+  color: var(--roxo-vivo);
+  border: 2px solid var(--roxo-vivo);
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.form-container p {
+    color: var(--cinza);
+    margin-top: -8px;
+}
+
+.form-container input {
+    background: var(--card);
+    border: 1.5px solid #444;
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--branco);
+    font-size: 15px;
+    outline: none;
+}
+
+.btn-voltar {
+    background: none;
+    border: none;
+    color: var(--lavanda);
+    font-size: 18px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.home-header {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.home-saudacao {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.home-sub {
+    font-size: 13px;
+    color: var(--cinza);
+    margin-top: 4px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+}
+
+.menu-item {
+    /* cada botão do menu */
+    background: var(--card);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    /* ícone em cima, texto embaixo */
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--branco);
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu-item:hover {
+    /* quando o mouse passa em cima */
+    border-color: var(--roxo-vivo);
+    /* borda roxa aparece */
+    background: #333;
+}
+
+.menu-icon {
+    font-size: 30px;
+    /* tamanho do emoji */
+}
+
+
+/* ===== SLIDESHOW ===== */
+.slideshow-container {
+    /* caixa do slideshow */
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    /* esconde o que sair da caixa */
+    position: relative;
+    /* posicionar as bolinhas */
+    height: 130px;
+}
+
+.slide {
+    display: none;
+    /* esconde todos os slides por padrão */
+    height: 100%;
+}
+
+.slide.ativo {
+    display: block;
+    /* mostra só o slide com class "ativo" */
+}
+
+.slide-content {
+    /* conteúdo dentro do slide */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.slide-1 {
+    background: linear-gradient(135deg, #4A0080, #7B2FBE);
+    /* degradê roxo */
+}
+
+.slide-2 {
+    background: linear-gradient(135deg, #2980b9, #6dd5fa);
+    /* degradê azul */
+}
+
+.slide-3 {
+    background: linear-gradient(135deg, #134e5e, #71b280);
+    /* degradê verde */
+}
+
+.slide-content h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.slide-content p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    /* branco com transparência */
+    margin-top: 4px;
+}
+
+.slide-dots {
+    /* bolinhas de navegação */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* centraliza as bolinhas */
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    /* cada bolinha */
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    /* branco transparente */
+    border-radius: 50%;
+    /* formato arredondado */
+    cursor: pointer;
+    border: none;
+}
+
+.dot.ativo {
+    background: white;
+    /* bolinha ativa fica branca */
+}
+
+/* ===== TELAS INTERNAS ===== */
+.tela-titulo {
+    /* título de cada tela interna */
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--lavanda);
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* ===== INFORMAÇÕES ===== */
+.info-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.info-item {
+    /* cada card de informação */
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    border-left: 4px solid var(--roxo-medio);
+    /* barrinha roxa na esquerda */
+}
+
+.info-item h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.info-item p {
+    font-size: 13px;
+    color: var(--cinza);
+    line-height: 1.5;
+    /* espaço entre as linhas do texto */
+}
+
+/* ===== CALENDÁRIO ===== */
+.calendario-nav {
+    /* navegação entre meses */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 4px;
+}
+
+.calendario-nav button {
+    /* botões de avançar e voltar mês */
+    background: var(--card);
+    border: none;
+    color: var(--branco);
+    font-size: 20px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.calendario-nav span {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.calendario-grid {
+    /* grade dos dias */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* 7 colunas iguais, uma para cada dia da semana */
+    gap: 4px;
+    width: 100%;
+}
+
+.cal-header {
+    /* cabeçalho dos dias da semana */
+    text-align: center;
+    font-size: 11px;
+    color: var(--cinza);
+    padding: 4px;
+}
+
+.cal-dia {
+    /* cada dia do mês */
+    text-align: center;
+    padding: 8px 4px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.cal-dia:hover {
+    background: #333;
+    /* escurece ao passar o mouse */
+}
+
+.cal-dia.hoje {
+    background: var(--roxo-vivo);
+    /* dia de hoje fica roxo */
+    color: white;
+    font-weight: bold;
+}
+
+/* ===== SCANNER ===== */
+.scanner-box {
+    /* área de preview da imagem */
+    width: 100%;
+    height: 220px;
+    background: #000;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    gap: 10px;
+    overflow: hidden;
+    /* esconde o que sair da caixa */
+}
+
+.scanner-box img {
+    /* imagem dentro do preview */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* preenche a caixa sem distorcer */
+}
+
+.scanner-icon {
+    font-size: 40px;
+}
+
+/* Avatar */
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 390px;
+  display: flex;
+  justify-content: space-around;
+  background: var(--card);
+  border-top: 1px solid #333;
+  padding: 12px 0;
+  z-index: 100;
+}
+.nav-item {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 10px;
+  transition: background 0.2s;
+  color: var(--cinza);
+}
+.nav-item.ativo { background: var(--roxo-profundo); color: white; }
+
+/* Navbar inferior */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #2a2a2a;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    z-index: 999;
+}
+
+/* ===== PERFIL ===== */
+.perfil-avatar {
+  width: 80px; height: 80px;
+  background: var(--roxo-medio);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+.perfil-nome { font-size: 20px; font-weight: 700; }
+.perfil-email { font-size: 14px; color: var(--cinza); }
+.perfil-opcoes { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 16px; }
+.btn-opcao-perfil {
+  background: var(--card);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--texto);
+  font-size: 15px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.btn-opcao-perfil:hover { border-color: var(--roxo-vivo); }
+.btn-opcao-perfil.danger { color: var(--erro); border-color: var(--erro); }
+
+/* ===== INFO ===== */
+.info-item {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid var(--roxo-medio);
+}
+.info-item h3 { font-size: 15px; margin-bottom: 6px; }
+.info-item p { font-size: 13px; color: #aaa; line-height: 1.5; }
+
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* ===== CONFIGURAÇÕES ===== */
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #333;
+  font-size: 15px;
+}
+.toggle { position: relative; display: inline-block; width: 48px; height: 26px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--lavanda);
+  border-radius: 26px;
+  transition: .3s;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 20px; width: 20px;
+  left: 3px; bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+input:checked + .slider { background: var(--roxo-vivo); }
+input:checked + .slider:before { transform: translateX(22px); }
